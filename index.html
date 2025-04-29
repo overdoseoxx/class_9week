@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>다마고치 키우기 키트</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+  <style>
+
+    @font-face { font-family: 'Pretendard-Regular'; src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');font-weight: 400;
+      font-style: normal;}
+
+    @font-face { font-family: 'TmonMonsori';src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/TmonMonsori.woff') format('woff'); font-weight: normal;font-style: normal;}
+
+     * { box-sizing: border-box; }
+    html {scroll-behavior: smooth;}
+    body {margin: 0;font-family: 'Pretendard-Regular', sans-serif;background: linear-gradient(to bottom, #FFD3F7, #C3B2F9);background-attachment: fixed;background-repeat: no-repeat;background-size: 100% auto;}
+
+
+    .navbar {position: fixed; top: 0; width: 100%; background-color: #FFAAEB;display: flex;justify-content: space-between;align-items: center;padding: 0 30px;height: 48px;z-index: 1000;}
+    .logo img { height: 28px; }
+    .nav-links { list-style: none; display: flex; margin: 0; padding: 0; height: 100%; }
+    .nav-links li { height: 100%; }
+    .nav-links li a {display: flex; align-items: center;height: 100%; padding: 0 30px;text-decoration: none; color: white;font-size: 14px; transition: background-color 0.2s, font-weight 0.2s;}
+    .nav-links li:hover a { background-color: #6758CF; font-weight: bold; }
+
+
+    .logo img { height: 28px; }
+    .nav-links { list-style: none; display: flex; height: 100%; }
+    .nav-links li a {display: flex; align-items: center; height: 100%;padding: 0 30px; text-decoration: none; color: white;font-size: 15px; transition: background-color 0.2s, font-weight 0.2s;}
+    .nav-links li:hover a { background-color: #6758CF; font-weight: bold; }
+
+    .slides { display: flex; width: 400%; height: 100%; transition: transform 0.5s ease-in-out; }
+    .slides img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; }
+    .dots { text-align: center; margin-top: 10px; }
+    .dot { height: 10px; width: 10px; margin: 0 5px; background-color: #ccc; border-radius: 50%; display: inline-block; cursor: pointer; }
+    .dot.active { background-color: #6758CF; }
+
+    .kit-section {display: flex;justify-content: center;align-items: center;width: 100%; height: 100vh; padding: 0;gap: 80px;flex-wrap: wrap;margin-top: 120px;}
+    .kit-slider { width: 600px; height: 600px; position: relative; overflow: hidden; border-radius: 20px; }
+    .kit-info { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 40px 20px; color: #4E4E4E; }
+    .kit-logo-wrapper { display: flex; justify-content: center; width: 100%; margin-bottom: 80px; }
+    .kit-logo { width: 450px; }
+    .kit-info h1 { font-size: 40px; font-family: 'TmonMonsori', sans-serif; color: white; margin-bottom: 20px; }
+    .kit-info p { font-size: 18px; line-height: 1.7; color: #4E4E4E; margin-bottom: 0; }
+
+    .speech-section { width: 1200px; max-width: 90%; margin: 20px auto 0; padding: 60px 0; display: flex; flex-direction: column; align-items: center; }
+    .speech-title { font-family: 'TmonMonsori', sans-serif; font-size: 60px; color: white; font-weight: bold; margin-bottom: 110px; text-align: center; }
+    .speech { background-color: #FF78C0; color: white; padding: 20px 32px; border-radius: 18px; font-size: 24px; max-width: 600px; width: 100%; line-height: 1.6; margin: 20px 0; opacity: 0; transform: translateY(20px); transition: all 0.6s ease; text-align: center; }
+    .speech.show { opacity: 1; transform: translateY(0); }
+    .speech.left { align-self: flex-start; }
+    .speech.right { align-self: flex-end; }
+
+    .prepared-section {width: 100%; max-width: 1200px;margin: 0 auto;padding: 80px 20px;display: flex;flex-direction: column;align-items: center;}
+    .prepared-title {font-family: 'TmonMonsori', sans-serif;font-size: 60px;color: white;font-weight: bold;margin-bottom: 24px;text-align: center;}
+    .prepared-subtext {font-family: 'Pretendard-Regular', sans-serif;font-size: 22px;color: #4E4E4E;line-height: 1.7;text-align: center;margin-bottom: 40px;}
+    .prepared-image {width: 80%;height: auto;display: block;border-radius: 20px;}
+    .grown-subtext {font-family: 'Pretendard-Regular', sans-serif;font-size: 18px; color: #7A7A7A; line-height: 1.6;text-align: center; margin-top: 20px;}
+
+
+    .feature-section { width: 1200px; max-width: 90%; margin: 80px auto; padding: 60px 0; text-align: center; }
+    .feature-title { font-family: 'TmonMonsori', sans-serif; font-size: 60px; color: white; font-weight: bold; margin-bottom: 24px; }
+    .feature-subtitle { font-family: 'Pretendard-Regular', sans-serif; font-size: 22px; color: #4E4E4E; line-height: 1.7; margin-bottom: 100px; }
+    .feature-cards { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .feature-card { flex: 1; min-width: 300px; max-width: 360px; height: 400px; background-size: cover; background-position: center; border-radius: 16px; position: relative; overflow: hidden; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); color: white; }
+    .feature-card .overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.25); border-radius: 16px; z-index: 1; }
+    .card-title, .card-desc { position: absolute; z-index: 2; color: white; text-align: left; }
+    .card-title { top: 24px; left: 24px; right: 24px; font-size: 24px; font-weight: bold; }
+    .card-desc { bottom: 24px; left: 24px; right: 24px; font-size: 16px; line-height: 1.5; }
+
+    .character-slider-section { width: 100vw; height: 100vh; overflow: hidden; position: relative; }
+    .swiper-slide.character-slide {
+      width: 100vw; height: 100vh;
+      background-size: 100% 100%; background-position: center; background-repeat: no-repeat;
+      display: flex; align-items: center; justify-content: flex-start; padding-left: 10vw; }
+    .character-text { max-width: 600px; color: #fff; }
+    .character-text h4 { font-size: 36px; margin-bottom: 20px; font-family: 'Pretendard-Regular'; }
+    .character-text h1 { font-size: 100px; font-weight: bold; font-family: 'TmonMonsori'; margin: 0; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); }
+    .character-text h5 { font-size: 32px; margin: 40px 0 20px; font-family: 'Pretendard-Regular'; }
+    .character-text p { font-size: 32px; line-height: 1.8; font-family: 'Pretendard-Regular'; }
+    .swiper-button-prev, .swiper-button-next { color: #fff; width: 44px; height: 44px; }
+    .swiper-button-prev { left: 60px; }
+    .swiper-button-next { right: 60px; }
+
+.review-section { width: 100%;max-width: 1000px;margin: 100px auto;padding: 40px 20px;display: flex;flex-direction: column;gap: 100px;}
+.review-block {display: flex;flex-direction: column;opacity: 0; transform: translateY(20px);transition: all 0.6s ease;max-width: 600px;}
+.review-block.show-on-scroll.show {opacity: 1;transform: translateY(0);}
+.review-block.right {align-self: flex-end;align-items: flex-end;margin-right: 40px;}
+.review-block.left {align-self: flex-start;align-items: flex-start;margin-left: 40px;}
+.review-bubble {padding: 28px 36px;background-color: #FF78C0;border-radius: 16px;color: white;font-size: 18px;position: relative;line-height: 1.8;}
+.review-bubble strong {display: block;font-size: 22px;font-weight: 800;margin-bottom: 10px;line-height: 1.4;}
+.review-bubble::after {content: "";position: absolute;top: 100%;border: 10px solid transparent;}
+.review-block.right .review-bubble::after {right: 24px;border-top-color: #FF78C0;}
+.review-block.left .review-bubble::after {left: 24px;border-top-color: #FF78C0;}
+.review-meta {font-size: 18px;color: #4E4E4E ;margin-bottom: 12px;}
+
+.buy-button-wrap {width: 100%; display: flex;justify-content: center;margin-top: 60px;margin-bottom: 100px;}
+.buy-button-wrap button {font-size: 20px;padding: 16px 42px;border: none;border-radius: 14px;background-color: #FF78C0;color: white;cursor: pointer;transition: background-color 0.3s ease;}
+.buy-button-wrap button:hover {background-color: #6758CF;font-weight: bold;}
+
+
+      .footer {padding: 40px 30px;font-family: 'Pretendard-Regular', sans-serif;color: white}
+      .footer-content {display: flex;justify-content: space-between;flex-wrap: nowrap; gap: 60px;max-width: 1400px; margin: 0 auto;}
+      .footer-left {flex: 1 1 400px;font-size: 16px;color: white;}
+      .footer-left p {margin: 6px 0;font-size: 16px;color: white;}
+      .footer-logo {height: 40px;margin-bottom: 16px;}
+      .footer-right {display: flex;gap: 60px;flex: none;justify-content: flex-end;flex-wrap: nowrap;}
+      .footer-col { min-width: 180px;}
+      .footer-col h4 {font-size: 18px;font-weight: bold;color: white; margin-bottom: 16px;white-space: nowrap;}
+      .footer-col ul { list-style: none;padding: 0;margin: 0;}
+      .footer-col li {margin-bottom: 10px;color: #EDEDED;font-size: 16px;}
+      .footer-divider {border: none; border-top: 1px solid white;margin: 40px 0 20px;width: 100%;}
+      .footer-bottom {font-size: 14px;color: white;text-align: center;padding-bottom: 20px;  margin-top: 50px;}
+ .footer-divider {
+  border: none;
+  border-top: 1px solid white;
+  margin: 40px auto 20px;
+  width: calc(100vw - 75px); 
+  max-width: none;
+}
+
+
+
+  </style>
+
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">
+      <img src="로고.png">
+    </div>
+   <ul class="nav-links">
+  <li><a href="#intro">제품소개</a></li>
+  <li><a href="https://overdoseoxx.github.io/class_8week/" target="_blank">구성품</a></li>
+  <li><a href="https://overdoseoxx.github.io/class_8week/" target="_blank">키우는 법</a></li>
+  <li><a href="#review">이용후기</a></li>
+  <li><a href="https://overdoseoxx.github.io/class_8week/" target="_blank">구매하기</a></li>
+</ul>
+  </nav>
+ <section class="kit-section" id="buy">
+    <div>
+      <div class="kit-slider">
+        <div class="slides" id="slides">
+          <img src="구매01.png" alt="슬라이드1">
+          <img src="구매02.png" alt="슬라이드2">
+          <img src="구매03.png" alt="슬라이드3">
+          <img src="구매04.png" alt="슬라이드4">
+        </div>
+      </div>
+      <div class="dots">
+        <span class="dot active" onclick="showSlide(0)"></span>
+        <span class="dot" onclick="showSlide(1)"></span>
+        <span class="dot" onclick="showSlide(2)"></span>
+        <span class="dot" onclick="showSlide(3)"></span>
+      </div>
+    </div>
+
+<div class="kit-info">
+  <div class="kit-logo-wrapper">
+    <img src="로고.png" alt="다마고치 로고" class="kit-logo">
+  </div>
+  <div class="kit-text">
+    <h1 class="kit tmon">다마고치 키우기 키트</h1>
+    <p>
+      외로운 당신을 위해, 최고의 친구가 되어줄<br>
+      반려친구 다마고치 프렌드 키트입니다.
+    </p>
+  </div>
+</div>
+
+
+<section class="speech-section" id="intro">
+  <h2 class="speech-title tmon">이런 고민 해보신적 없으신가요?</h2>
+
+  <div class="speech left">“속마음을 털어놓을 상대가 필요해,, ”</div>
+  <div class="speech right">“키우기 쉬운 반려동물 어디 없을까?”</div>
+  <div class="speech left">“자취중인데, 너무 외로워...<br>원룸이라 동물은 못 키우는데,, ”</div>
+</section>
+
+<section class="prepared-section">
+  <h2 class="prepared-title tmon">그래서 준비했습니다!</h2>
+  <p class="prepared-subtext pretendard">
+    다마고치 프렌드를 현실에서 키워보세요!
+  </p>
+  <img src="메인02.png" alt="그래서 준비했습니다" class="prepared-image">
+
+  <!-- 성체 문구만 별도 스타일로 조정 -->
+  <p class="grown-subtext pretendard">
+    *위 이미지는 ‘다마고치 키우기 키트’로 성장한 다마고치의 성체 모습입니다.*
+  </p>
+</section>
+
+<section class="feature-section">
+  <h2 class="feature-title tmon">다마고치 프렌즈는 무엇이 다를까요?</h2>
+  <p class="feature-subtitle pretendard">다마고치 프렌드만의 특별함을 소개해드릴께요!</p>
+
+  <div class="feature-cards">
+    <div class="feature-card" style="background-image: url('배경01.png');">
+      <div class="overlay"></div>
+      <h3 class="card-title">간편한 관리</h3>
+      <p class="card-desc">간식이나 고양이처럼 사료나 생활용품을 챙길 필요 없이, 신경이 많이 안가도 주기 좋아요.</p>
+    </div>
+    <div class="feature-card" style="background-image: url('배경02.png');">
+      <div class="overlay"></div>
+      <h3 class="card-title">내 마음을 알아주는 친구</h3>
+      <p class="card-desc">다마고치 프렌드는 단순한 앱의 존재가 아니라 일상적으로 가능한 존재입니다.</p>
+    </div>
+    <div class="feature-card" style="background-image: url('배경03.png');">
+      <div class="overlay"></div>
+      <h3 class="card-title">깨끗하고 위생적인</h3>
+      <p class="card-desc">일반 반려동물과 달리 털, 냄새, 소음, 내변 문제가 없어 항상 깔끔하게 유지가 가능합니다.</p>
+    </div>
+  </div>
+</section>
+
+<section class="character-slider-section">
+  <div class="swiper characterSwiper">
+    <div class="swiper-wrapper">
+
+      <div class="swiper-slide character-slide" style="background-image: url('캐릭터01.png');">
+        <div class="character-text">
+          <h4>키트로 만나볼 수 있는 다마고치</h4>
+          <h1>MAMECHI</h1>
+          <h5>Brave Little Frands</h5>
+          <p>마메치는 용감하고 정의로운 다마고치입니다.<br>모험심이 강해 탐험하기를 좋아합니다.</p>
+        </div>
+      </div>
+
+      <div class="swiper-slide character-slide" style="background-image: url('캐릭터02.png');">
+        <div class="character-text">
+          <h4>키트로 만나볼 수 있는 다마고치</h4>
+          <h1>KUCHIAPATCHI</h1>
+          <h5>Kind Little Frands</h5>
+          <p>구치파치는 여유롭고 느긋한 다마고치입니다.<br>먹는걸 좋아해 간식을 주면 좋아합니다.</p>
+        </div>
+      </div>
+
+      <div class="swiper-slide character-slide" style="background-image: url('캐릭터03.png');">
+        <div class="character-text">
+          <h4>키트로 만나볼 수 있는 다마고치</h4>
+          <h1>MEMETCHI</h1>
+          <h5>Cute Little Frands</h5>
+          <p>메메치는 귀엽고 상냥한 다마고치입니다.<br>반짝이는 것과 꾸미는 것을 좋아합니다.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+
+</section>
+<section class="review-section" id="review">
+  <div class="review-block right show-on-scroll">
+    <div class="review-meta">👤 20대 대학생 윤OO님 후기</div>
+    <div class="review-bubble">
+      <strong>더이상 외롭지 않아요!</strong>
+      “혼자 집에있으면 너무 심심하고 외로웠는데,<br>
+      이제 다마고치가 함께 있어서 외롭지 않아요!<br>
+      다마고치 짱!”
+    </div>
+  </div>
+  <div class="review-block left show-on-scroll">
+    <div class="review-meta">👤 40대 주부 최OO님 후기</div>
+    <div class="review-bubble">
+      <strong>아이가 좋아합니다.</strong>
+      “아이의 성향에 맞는 반려동물을 찾기가 힘들었는데…<br>
+      아이도 무척 좋아해요.”
+    </div>
+  </div>
+  <div class="review-block right show-on-scroll">
+    <div class="review-meta">👤 30대 회사원 김OO님 후기</div>
+    <div class="review-bubble">
+      <strong>퇴근이 기다려집니다.</strong>
+      “퇴근하고 집에 돌아오면 반겨주는 존재가 있다는 점만으로도<br>
+      정말 큰 위로가 됩니다.”
+    </div>
+  </div>
+</section>
+<div class="buy-button-wrap">
+  <button onclick="window.location.href='https://overdoseoxx.github.io/class_8week/'">
+    구매하러 가기
+  </button>
+</div>
+
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-left">
+      <img src="로고.png" class="footer-logo" />
+      <p>대표이사: Yun Seol &nbsp; | &nbsp; 서울특별시 노원구 공릉로 232</p>
+      <p>Mail: overdoseoxx@gmail.com &nbsp; | &nbsp; TEL: 82-1234-5678</p>
+      <p>사업자등록번호: 231-00-998 &nbsp; | &nbsp; 통신판매업신고: 제2025-서울노원-1234호</p>
+    </div>
+
+    <div class="footer-right">
+      <div class="footer-col">
+        <h4>About Us</h4>
+        <ul>
+          <li>Product</li>
+          <li>Brand</li>
+          <li>Instagram</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Customer Service</h4>
+        <ul>
+          <li>Services</li>
+          <li>Supports</li>
+          <li>delivery tracking</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <ul>
+          <li>82-1234-5678</li>
+          <li>overdoseoxx@gmail.com</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ✅ 바깥에 위치해야 전체 너비 줄이 표시됩니다 -->
+  <hr class="footer-divider" />
+
+  <div class="footer-bottom">
+    ©2025. Yun Seol All rights reserved.
+  </div>
+</footer>
+
+
+    <script>
+    let currentIndex = 0;
+    const slides = document.getElementById('slides');
+    const dots = document.querySelectorAll('.dot');
+
+    function showSlide(index) {currentIndex = index;
+      const slideWidth = document.querySelector('.kit-slider').clientWidth;
+      slides.style.transform = `translateX(-${slideWidth * index}px)`;
+      dots.forEach(dot => dot.classList.remove('active'));
+      dots[currentIndex].classList.add('active');}
+      window.addEventListener('resize', () => showSlide(currentIndex));
+  </script>
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.2
+  });
+
+  document.querySelectorAll('.show-on-scroll, .speech').forEach(el => observer.observe(el));
+</script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <script>
+    const swiper = new Swiper(".characterSwiper", {
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev"
+      }
+    });
+  </script>
+  
